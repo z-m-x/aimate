@@ -493,6 +493,7 @@
             scrollOverflow: true,
             anchors: ['FixDye', 'Fixed_Colour_Recipe', 'Resource_Efficiency1', 'Resource_Efficiency2', 'Resource_Efficiency3', 'Resource_Efficiency4', 'Superior_Color_Fastness', 'Short-Lead_Time', 'Powered_By_REO-ECO', 'Footer'],
             navigation: true,
+            paddingBottom:'2rem',
             // navigationTooltips: ['FixDye', 'Fixed Colour Recipe', 'Resource Efficiency', 'Resource Efficiency', 'Resource Efficiency', 'Resource Efficiency', 'Superior Color Fastness', 'Short-Lead Time', 'Powered By REO-ECO', 'Footer'],
             showActiveTooltip: false,
             navigationPosition: 'right',
@@ -850,10 +851,14 @@
             },
             afterLoad: function (origin, destination, direction, trigger) {
                 var origin = this;
+                console.log(myFullpage,'11111111')
                 if (origin.anchor == 'Resource_Efficiency') {
                     //$(".hometitle.Fixed").addClass("show");
                 }
                 if (origin.anchor == 'Footer') {
+                    myFullpage.paddingBottom='2rem';
+                    console.log( myFullpage.paddingBottom,' myFullpage.paddingBottom')
+
                     var video = document.getElementById('videoplay');
                     video.autoplay = true;
 
@@ -863,6 +868,9 @@
                         video.play();
                     }, 1000);
                 }else{
+                    myFullpage.paddingBottom='';
+                    console.log( myFullpage.paddingBottom,' myFullpage.paddingBottom')
+
                     $("#videoplay").fadeOut();
                 }
 

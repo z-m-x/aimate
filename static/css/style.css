@@ -288,9 +288,21 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
 @media (max-width: 768px) {
     #section9{
         padding-top: 7rem;
+        position: relative;
+    }
+    #section9   .fp-scroller{
+        overflow: initial !important;
     }
     .footer{
         height: auto !important;
+        position: absolute;
+        top: 10vh;
+        left: 0;
+    }
+    .foot-brand{
+        position: absolute;
+        top: 2vh;
+        left: 0;
     }
     .foot-copy .copy-nav a {
         margin-right: 1rem !important;
@@ -300,10 +312,17 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
         position: initial !important;
         height: auto !important;
         padding-bottom: 5rem !important;
+       
+    }
+    .iScrollIndicator{
+        background-color:transparent !important;
     }
     .foot-box {
-        padding-top: 7rem !important;
-    padding-bottom: 10rem !important;
+        /* padding-top: 7rem !important;
+    padding-bottom: 10rem !important; */
+
+    height: calc(22rem - constant(safe-area-inset-bottom)) !important;
+    height: calc(22rem - env(safe-area-inset-bottom)) !important;
         display: block !important;
 
     }

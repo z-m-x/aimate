@@ -385,6 +385,8 @@
 
         <!--footer-->
         <div class="section fp-auto-height bottom" id="section9">
+
+      
             <div class="foot-brand">
                 <div class="swiper-container brand-list">
                     <div class="swiper-wrapper">
@@ -912,17 +914,17 @@
     });
     </script>
     <script>
-        var swiper = new Swiper(".brand-list", {
-            slidesPerView:isMobile?5: 11,
-            spaceBetween: 30,
+        // var swiper = new Swiper(".brand-list", {
+        //     slidesPerView:isMobile?5: 11,
+        //     spaceBetween: 30,
 
-            loop: true,
-            speed: 3000,
-            autoplay: {
-                delay: 0,
-                disableOnInteraction: false,
-            },
-        });
+        //     loop: true,
+        //     speed: 3000,
+        //     autoplay: {
+        //         delay: 0,
+        //         disableOnInteraction: false,
+        //     },
+        // });
     </script>
     <script>
         function isWeixin() {
@@ -973,7 +975,17 @@ document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
             // hideWeChatToolbar()
             // enterFullscreen()
 
-         
+            var swiper = new Swiper(".brand-list", {
+            slidesPerView:isMobile?5: 11,
+            spaceBetween: 30,
+
+            loop: true,
+            speed: 3000,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+        });
 if(isMobile){
     
     $('#section9').removeClass('fp-auto-height')

@@ -69,7 +69,7 @@
             <li><a href="">Technology</a></li>
             <li><a href="">Newsroom</a></li>
         </div>
-      </div>
+    </div>
     <div id="fullpage">
         <div class="header">
             <div class="wrapper">
@@ -80,10 +80,10 @@
                     <div class="language"><a href="https://www.reo-eco.cn/" target="_blank">PRC</a></div>
                 </div>
                 <button class="menu-btn" id="menuBtn">☰</button>
-                
+
                 <div class="nav">
 
-                 
+
                     <li><a href="">Mission</a></li>
                     <li><a href="">Products</a></li>
                     <li><a href="">Technology</a></li>
@@ -204,7 +204,7 @@
                 </a>
             </div>
         </div>
-            <div class="hometitle" id="s4">Resource Efficiency</div>
+        <div class="hometitle" id="s4">Resource Efficiency</div>
 
         <!--Resource Efficiency-->
         <div class="section" id="section2">
@@ -214,7 +214,7 @@
                 <div class="item" id="Resource01" style="display: none;">
                     <div class="text">
                         <div class="title">ENERGY</div>
-                        <div class="number">-<i class="animateNum">64</i>%</div>
+                        <div class="number">-<i class="animateNum"></i>%</div>
                     </div>
                     <img src="static/img/301-reoeco-energy.jpg" alt="" class="pic" data-wow-delay="0.5s">
                 </div>
@@ -254,7 +254,7 @@
                 <div class="item" id="Resource02" style="display: none;">
                     <div class="text ">
                         <div class="title">CHEMICALS</div>
-                        <div class="number">-<i class="animateNum">80</i>%</div>
+                        <div class="number">-<i class="animateNum"></i>%</div>
                     </div>
                     <img src="static/img/302-reoeco-chemical.jpg" alt="" class="pic">
                 </div>
@@ -274,7 +274,7 @@
                 <div class="item" id="Resource03" style="display: none;">
                     <div class="text">
                         <div class="title">WATER</div>
-                        <div class="number">-<i class="animateNum">90</i>%</div>
+                        <div class="number">-<i class="animateNum"></i>%</div>
                     </div>
                     <img src="static/img/303-reoeco-water.jpg" alt="" class="pic">
                 </div>
@@ -295,7 +295,7 @@
                 <div class="item" id="Resource04" style="display: none;">
                     <div class="text">
                         <div class="title">Co<i style="vertical-align: super;font-size:smaller;">2</i></div>
-                        <div class="number">-<i class="animateNum">67</i>%</div>
+                        <div class="number">-<i class="animateNum"></i>%</div>
                     </div>
                     <img src="static/img/304-reoeco-co2.jpg" alt="" class="pic">
                 </div>
@@ -369,10 +369,9 @@
                 </div>
                 <img src="static/img/reoeco-factory-render.jpg" alt="" class="pic"></img>
                 <video controls="" name="media" preload=“metadata” class="video-play" id="videoplay" width="100%"
-
-                x5-playsinline="" playsinline="" x-webkit-airplay="allow" 
-                    height="100%" ng-src="static/video/REO-ECO-VIDEO-WEB.mp4"
-                    src="https://wjzynetvideo.oss-cn-beijing.aliyuncs.com/REO-ECO-VIDEO-WEB.mp4" preload="none" 
+                    x5-playsinline="" playsinline="" x-webkit-airplay="allow" height="100%"
+                    ng-src="static/video/REO-ECO-VIDEO-WEB.mp4"
+                    src="https://wjzynetvideo.oss-cn-beijing.aliyuncs.com/REO-ECO-VIDEO-WEB.mp4" preload="none"
                     muted></video>
             </div>
             <div class="nextlink intro">
@@ -386,7 +385,7 @@
         <!--footer-->
         <div class="section fp-auto-height bottom" id="section9">
 
-      
+
             <div class="foot-brand">
                 <div class="swiper-container brand-list">
                     <div class="swiper-wrapper">
@@ -475,10 +474,10 @@
             </div>
         </div>
     </div>
-    
+
     <script>
-          var  isMobile= window.innerWidth <= 768;
- 
+        var isMobile = window.innerWidth <= 768;
+
         var wowvm = new WOW({
         })
         wowvm.init();
@@ -486,432 +485,464 @@
     <script language="javascript" type="text/javascript" src="static/js/scrolloverflow.js"></script>
     <script language="javascript" type="text/javascript" src="static/js/fullpage.js"></script>
     <script type="text/javascript">
-        $(function(){
+        const numbers=[64,80,90,67]
+  // 设置初始值和目标值
+    var endValue = 0;
+    var duration = 800; // 动画总时间（毫秒）
+    var stepTime = 50; // 每次递减的时间间隔（毫秒）
 
-        
-        var myFullpage = new fullpage('#fullpage', {
-            verticalCentered: false,
-            css3: false,
-            scrollBar: false,
-            scrollingSpeed: 1500,
-            scrollOverflow: true,
-            anchors: ['FixDye', 'Fixed_Colour_Recipe', 'Resource_Efficiency1', 'Resource_Efficiency2', 'Resource_Efficiency3', 'Resource_Efficiency4', 'Superior_Color_Fastness', 'Short-Lead_Time', 'Powered_By_REO-ECO', 'Footer'],
-            navigation: true,
-            paddingBottom:0,
-            // navigationTooltips: ['FixDye', 'Fixed Colour Recipe', 'Resource Efficiency', 'Resource Efficiency', 'Resource Efficiency', 'Resource Efficiency', 'Superior Color Fastness', 'Short-Lead Time', 'Powered By REO-ECO', 'Footer'],
-            showActiveTooltip: false,
-            navigationPosition: 'right',
-            afterResponsive: function (isResponsive) {
-                alert("Es responsive: " + isResponsive);
-            },
-            onLeave: function (origin, destination, direction, trigger) {
-                var origin = this;
+    // 递减动画
+    function startCountdown(el,startValue) {
+      var currentValue = startValue;
+      var step = (startValue - 0) / (duration / stepTime);
+
+      var interval = setInterval(function() {
+        currentValue -= step;
+        if (currentValue <= 0) {
+          currentValue = 0; // 确保数字不小于目标值
+          clearInterval(interval); // 停止递减
+        }
+        el.text(Math.round(currentValue)); // 更新文本内容
+      }, stepTime);
+    }
+      
+        $(function () {
 
 
-                if (direction == 'up') {
+            var myFullpage = new fullpage('#fullpage', {
+                verticalCentered: false,
+                css3: false,
+                scrollBar: false,
+                scrollingSpeed: 1500,
+                scrollOverflow: true,
+                anchors: ['FixDye', 'Fixed_Colour_Recipe', 'Resource_Efficiency1', 'Resource_Efficiency2', 'Resource_Efficiency3', 'Resource_Efficiency4', 'Superior_Color_Fastness', 'Short-Lead_Time', 'Powered_By_REO-ECO', 'Footer'],
+                navigation: true,
+                paddingBottom: 0,
+                // navigationTooltips: ['FixDye', 'Fixed Colour Recipe', 'Resource Efficiency', 'Resource Efficiency', 'Resource Efficiency', 'Resource Efficiency', 'Superior Color Fastness', 'Short-Lead Time', 'Powered By REO-ECO', 'Footer'],
+                showActiveTooltip: false,
+                navigationPosition: 'right',
+                afterResponsive: function (isResponsive) {
+                    alert("Es responsive: " + isResponsive);
+                },
+                onLeave: function (origin, destination, direction, trigger) {
+                    var origin = this;
 
-                    console.log(origin, destination, direction, trigger, 'origin, destination, direction, trigger')
 
-                    if (destination.anchor == "FixDye") {
-                        var wowvm = new WOW({
-                        })
-                        wowvm.init();
-                        setTimeout(function () {
-                            $(".FixDye").fadeIn(1000);
-                        }, 600);
-                        $(".topbanner").fadeIn(1000);
+                    if (direction == 'up') {
 
-                    }
-                    if(destination.anchor!="Resource_Efficiency1"&&destination.anchor!="Resource_Efficiency2"&&destination.anchor!="Resource_Efficiency3"&&destination.anchor!="Resource_Efficiency4"){
-                    $("#s4").fadeOut()
-                    $("#s4n").fadeOut()
-                    }
-                    if (destination.anchor == 'Short-Lead_Time') {
+                        console.log(origin, destination, direction, trigger, 'origin, destination, direction, trigger')
 
-                        // setTimeout(function () {
-                        $(".Short-Lead .text").fadeIn(3000);
-                        // }, 500);
-                        // setTimeout(function () {
-                        $(".Short-Lead .pic").fadeIn(3000);
-                        // }, 800);
-                        //alert("banner 后");
+                        if (destination.anchor == "FixDye") {
+                            var wowvm = new WOW({
+                            })
+                            wowvm.init();
+                            setTimeout(function () {
+                                $(".FixDye").fadeIn(1000);
+                            }, 600);
+                            $(".topbanner").fadeIn(1000);
+
+                        }
+                        if (destination.anchor != "Resource_Efficiency1" && destination.anchor != "Resource_Efficiency2" && destination.anchor != "Resource_Efficiency3" && destination.anchor != "Resource_Efficiency4") {
+                            $("#s4").fadeOut()
+                            $("#s4n").fadeOut()
+                        }
+                        if (destination.anchor == 'Short-Lead_Time') {
+
+                            // setTimeout(function () {
+                            $(".Short-Lead .text").fadeIn(3000);
+                            // }, 500);
+                            // setTimeout(function () {
+                            $(".Short-Lead .pic").fadeIn(3000);
+                            // }, 800);
+                            //alert("banner 后");
+                        } else {
+                            $(".Short-Lead .text").fadeOut();
+                            $(".Short-Lead .pic").fadeOut();
+                        }
+                        if (origin.anchor == 'Powered_By_REO-ECO') {
+
+
+                            setTimeout(function () {
+                                $(".Powered-REOECO .text").fadeIn(1000);
+                                $(".Powered-REOECO .pic").fadeIn(1000);
+                                $("#videoplay").fadeOut();
+                                //     $(".Powered-REOECO .text").fadeIn(1000);
+                                //     $(".Powered-REOECO .pic").fadeIn(1000);
+                                //     setTimeout(function () {
+                                //     $("#videoplay").fadeIn();
+                                //     $(".Powered-REOECO .text").fadeOut(1000);
+                                //     $(".Powered-REOECO .pic").fadeOut(1000);
+
+                                // }, 3000);
+                            }, 1000);
+
+                        } else {
+                            // $(".Powered-REOECO .text").fadeOut(1000);
+                            // $(".Powered-REOECO .pic").fadeOut(1000);
+                            // setTimeout(function () {
+                            //     $("#videoplay").fadeIn();
+
+                            // }, 1000);
+                        }
+                        if (destination.anchor == 'Resource_Efficiency1') {
+                            $('#Resource01 .number').css('opacity', 0)
+                            startCountdown($('#Resource02 .animateNum'),numbers[1])
+
+                            setTimeout(function () {
+                                $("#Resource01").fadeIn(function () {
+                                    $('#Resource01 .animateNum').countUp();
+                                    
+                                    $('#Resource01 .number').css('opacity', 1)
+
+                                });
+                            }, 1000);
+                        } else {
+                            $("#Resource01").fadeOut(500);
+
+
+                        }
+
+
+                        if (destination.anchor == 'Resource_Efficiency2') {
+                            $('#Resource02 .number').css('opacity', 0)
+                            startCountdown($('#Resource03 .animateNum'),numbers[2])
+
+                            setTimeout(function () {
+                                $("#Resource02").fadeIn(function () {
+                                    $('#Resource02 .animateNum').countUp();
+                                    $('#Resource02 .number').css('opacity', 1)
+
+                                });
+                            }, 1000);
+                        } else {
+                            // $("#Resource02").fadeOut(500);
+
+                        }
+                        if (destination.anchor == 'Resource_Efficiency3') {
+                            $('#Resource03 .number').css('opacity', 0)
+                            startCountdown($('#Resource04 .animateNum'),numbers[3])
+
+                            setTimeout(function () {
+                                $("#Resource03").fadeIn(function () {
+                                    $('#Resource03 .animateNum').countUp();
+                                    $('#Resource03 .number').css('opacity', 1)
+
+                                });
+                            }, 1000);
+                        } else {
+                            // $("#Resource03").fadeOut(500);
+
+                        }
+                        if (destination.anchor == 'Resource_Efficiency4') {
+                            $('#Resource04 .number').css('opacity', 0)
+
+
+                            setTimeout(function () {
+                                $("#Resource04").fadeIn(function () {
+                                    $('#Resource04 .animateNum').countUp();
+                                    $('#Resource04 .number').css('opacity', 1)
+
+                                });
+                                $("#s4").fadeIn()
+                                $("#s4n").fadeIn()
+                            }, 1000);
+
+                        } else {
+                            // $("#Resource04").fadeOut(500);
+                        }
+
                     } else {
-                        $(".Short-Lead .text").fadeOut();
-                        $(".Short-Lead .pic").fadeOut();
-                    }
-                    if (origin.anchor == 'Powered_By_REO-ECO') {
-                      
+                        console.log(origin, destination, direction, trigger, 'origin, destination, direction, trigger')
 
-                        setTimeout(function () {
-                            $(".Powered-REOECO .text").fadeIn(1000);
-                            $(".Powered-REOECO .pic").fadeIn(1000);
+                        if (destination.anchor == 'Short-Lead_Time') {
                             $("#videoplay").fadeOut();
-                        //     $(".Powered-REOECO .text").fadeIn(1000);
-                        //     $(".Powered-REOECO .pic").fadeIn(1000);
-                        //     setTimeout(function () {
-                        //     $("#videoplay").fadeIn();
-                        //     $(".Powered-REOECO .text").fadeOut(1000);
-                        //     $(".Powered-REOECO .pic").fadeOut(1000);
-                        
-                        // }, 3000);
-                        }, 1000);
 
-                    } else {
-                        // $(".Powered-REOECO .text").fadeOut(1000);
-                        // $(".Powered-REOECO .pic").fadeOut(1000);
-                        // setTimeout(function () {
-                        //     $("#videoplay").fadeIn();
-                            
-                        // }, 1000);
-                    }
-                    if (destination.anchor == 'Resource_Efficiency1') {
-                        $('#Resource01 .number').css('opacity',0)
+                            // setTimeout(function () {
+                            $(".Short-Lead .text").fadeIn(3000);
+                            // }, 500);
+                            // setTimeout(function () {
+                            $(".Short-Lead .pic").fadeIn(3000);
+                            // }, 800);
+                        } else {
+                            $(".Short-Lead .text").fadeOut();
+                            $(".Short-Lead .pic").fadeOut();
+                        }
+                        if (origin.anchor == 'Short-Lead_Time') {
+                            // $("#videoplay").fadeOut();
 
-                        setTimeout(function () {
-                            $("#Resource01").fadeIn(function () {
-                                $('#Resource01 .animateNum').countUp();
-                        $('#Resource01 .number').css('opacity',1)
+                            setTimeout(function () {
+                                $(".Powered-REOECO .text").fadeIn(1000);
+                                $(".Powered-REOECO .pic").fadeIn(1000);
+                            }, 1000)
+                            setTimeout(function () {
+                                $("#videoplay").fadeIn();
+                                var video = document.getElementById('videoplay');
+                                video.autoplay = true;
 
-                            });
-                        }, 1000);
-                    } else {
-                        $("#Resource01").fadeOut(500);
+                                setTimeout(function () {
 
+                                    video.play();
+                                }, 3000); // 3000毫秒 = 3秒
+                                $(".Powered-REOECO .text").fadeOut(1000);
+                                $(".Powered-REOECO .pic").fadeOut(1000);
 
-                    }
+                            }, 3000);
 
-
-                    if (destination.anchor == 'Resource_Efficiency2') {
-                        $('#Resource02 .number').css('opacity',0)
-
-                        setTimeout(function () {
-                            $("#Resource02").fadeIn(function () {
-                                $('#Resource02 .animateNum').countUp();
-                        $('#Resource02 .number').css('opacity',1)
-
-                            });
-                        }, 1000);
-                    } else {
-                        $("#Resource02").fadeOut(500);
-
-                    }
-                    if (destination.anchor == 'Resource_Efficiency3') {
-                        $('#Resource03 .number').css('opacity',0)
-
-                        setTimeout(function () {
-                            $("#Resource03").fadeIn(function () {
-                                $('#Resource03 .animateNum').countUp();
-                        $('#Resource03 .number').css('opacity',1)
-
-                            });
-                        }, 1000);
-                    } else {
-                        $("#Resource03").fadeOut(500);
-
-                    }
-                    if (destination.anchor == 'Resource_Efficiency4') {
-                        $('#Resource04 .number').css('opacity',0)
-                 
-
-                        setTimeout(function () {
-                            $("#Resource04").fadeIn(function () {
-                                $('#Resource04 .animateNum').countUp();
-                        $('#Resource04 .number').css('opacity',1)
-
-                            });
-                            $("#s4").fadeIn()
-                            $("#s4n").fadeIn()
-                        }, 1000);
-
-                    } else {
-                        $("#Resource04").fadeOut(500);
-                    }
-
-                } else {
-                    console.log(origin, destination, direction, trigger, 'origin, destination, direction, trigger')
-
-                    if (destination.anchor == 'Short-Lead_Time') {
-                        $("#videoplay").fadeOut();
-
-                        // setTimeout(function () {
-                        $(".Short-Lead .text").fadeIn(3000);
-                        // }, 500);
-                        // setTimeout(function () {
-                        $(".Short-Lead .pic").fadeIn(3000);
-                        // }, 800);
-                    } else {
-                        $(".Short-Lead .text").fadeOut();
-                        $(".Short-Lead .pic").fadeOut();
-                    }
-                    if (origin.anchor == 'Short-Lead_Time') {
-                        // $("#videoplay").fadeOut();
-
-                        setTimeout(function () {
-                            $(".Powered-REOECO .text").fadeIn(1000);
-                            $(".Powered-REOECO .pic").fadeIn(1000);
-                        }, 1000)
-                        setTimeout(function () {
-                            $("#videoplay").fadeIn();
-                            var video = document.getElementById('videoplay');
-                            video.autoplay = true;
-
-                        setTimeout(function () {
-
-                            video.play();
-                        }, 3000); // 3000毫秒 = 3秒
+                        } else {
                             $(".Powered-REOECO .text").fadeOut(1000);
                             $(".Powered-REOECO .pic").fadeOut(1000);
+                            setTimeout(function () {
+                                $("#videoplay").fadeIn();
+                                var video = document.getElementById('videoplay');
+                                video.autoplay = true;
+
+                                setTimeout(function () {
+
+                                    video.play();
+                                }, 3000); // 3000毫秒 = 3秒
+                            }, 1000);
+                        }
+
+                        if (destination.anchor == 'Resource_Efficiency1') {
+
+                            $('#Resource01 .number').css('opacity', 0)
+                            setTimeout(function () {
+                                $("#Resource01").fadeIn(function () {
+                                    $('#Resource01 .animateNum').text(numbers[0]+'')
+                                    $('#Resource01 .animateNum').countUp();
+                                    $('#Resource01 .number').css('opacity', 1)
+
+                                });
+                                $("#s4").fadeIn()
+                                $("#s4n").fadeIn()
+                            }, 1000);
+                        } else {
                         
-                        }, 3000);
+                            // $("#Resource01").fadeOut(500);
 
-                    } else {
-                        $(".Powered-REOECO .text").fadeOut(1000);
-                        $(".Powered-REOECO .pic").fadeOut(1000);
-                        setTimeout(function () {
-                            $("#videoplay").fadeIn();
-                            var video = document.getElementById('videoplay');
-                            video.autoplay = true;
+                        }
 
-                        setTimeout(function () {
+                        if (destination.anchor == 'Resource_Efficiency2') {
+                            $('#Resource02 .number').css('opacity', 0)
+                            startCountdown($('#Resource01 .animateNum'),numbers[0])
+                            setTimeout(function () {
+                                $("#Resource02").fadeIn(function () {
+                                    $('#Resource02 .animateNum').text(numbers[1]+'')
+                                    $('#Resource02 .animateNum').countUp();
+                                    $('#Resource02 .number').css('opacity', 1)
 
-                            video.play();
-                        }, 3000); // 3000毫秒 = 3秒
-                        }, 1000);
-                    }
+                                });
+                            }, 1000);
+                        } else {
+                            // $("#Resource02").fadeOut(500);
 
-                    if (destination.anchor == 'Resource_Efficiency1') {
-                        
-                        $('#Resource01 .number').css('opacity',0)
-                        setTimeout(function () {
-                            $("#Resource01").fadeIn(function () {
-                                $('#Resource01 .animateNum').countUp();
-                                 $('#Resource01 .number').css('opacity',1)
+                        }
+                        if (destination.anchor == 'Resource_Efficiency3') {
+                            $('#Resource03 .number').css('opacity', 0)
+                            startCountdown($('#Resource02 .animateNum'),numbers[1])
 
-                            });
-                            $("#s4").fadeIn()
-                            $("#s4n").fadeIn()
-                        }, 1000);
-                    } else {
-                        $("#Resource01").fadeOut(500);
+                            setTimeout(function () {
+                                $("#Resource03").fadeIn(function () {
+                                    $('#Resource03 .animateNum').text(numbers[2]+'')
 
-                    }
+                                    $('#Resource03 .animateNum').countUp();
+                                    $('#Resource03 .number').css('opacity', 1)
 
-                    if (destination.anchor == 'Resource_Efficiency2') {
-                        $('#Resource02 .number').css('opacity',0)
+                                });
+                            }, 1000);
+                        } else {
+                            // $("#Resource03").fadeOut(500);
 
-                        setTimeout(function () {
-                            $("#Resource02").fadeIn(function () {
-                                $('#Resource02 .animateNum').countUp();
-                                $('#Resource02 .number').css('opacity',1)
+                        }
+                        if (destination.anchor == 'Resource_Efficiency4') {
+                            $('#Resource04 .number').css('opacity', 0)
+                            startCountdown($('#Resource03 .animateNum'),numbers[2])
 
-                            });
-                        }, 1000);
-                    } else {
-                        $("#Resource02").fadeOut(500);
+                            setTimeout(function () {
+                                $("#Resource04").fadeIn(function () {
+                                    $('#Resource04 .animateNum').text(numbers[3]+'')
+                                    $('#Resource04 .animateNum').countUp();
+                                    $('#Resource04 .number').css('opacity', 1)
 
-                    }
-                    if (destination.anchor == 'Resource_Efficiency3') {
-                        $('#Resource03 .number').css('opacity',0)
+                                });
+                            }, 1000);
 
-                        setTimeout(function () {
-                            $("#Resource03").fadeIn(function () {
-                                $('#Resource03 .animateNum').countUp();
-                                $('#Resource03 .number').css('opacity',1)
 
-                            });
-                        }, 1000);
-                    } else {
-                        $("#Resource03").fadeOut(500);
+                        } else {
+                            $("#Resource04").fadeOut(500);
+                        }
+                        $(".FixDye").fadeOut();
+                        $(".topbanner").fadeOut(1000);
+
 
                     }
-                    if (destination.anchor == 'Resource_Efficiency4') {
-                        $('#Resource04 .number').css('opacity',0)
-
-                        setTimeout(function () {
-                            $("#Resource04").fadeIn(function () {
-                                $('#Resource04 .animateNum').countUp();
-                                $('#Resource04 .number').css('opacity',1)
-
-                            });
-                        }, 1000);
-
-
-                    } else {
-                        $("#Resource04").fadeOut(500);
-                    }
-                    $(".FixDye").fadeOut();
-                    $(".topbanner").fadeOut(1000);
-
-
-                }
-                $(".hometitle.Fixed").removeClass("show");
-                if (origin.anchor == 'FixDye') {
-                    $(".hometitle.Fixed").addClass("show");
-                }
-                if (origin.anchor == 'Fixed_Colour_Recipe' || origin.anchor == 'Resource_Efficiency1' || origin.anchor == 'Resource_Efficiency2' || origin.anchor == 'Resource_Efficiency3') {
                     $(".hometitle.Fixed").removeClass("show");
-                    // setTimeout(function () {
-                    //     $("#Resource01").fadeIn(function () {
-                    //         $('#Resource01 .animateNum').countUp();
-                    //     });
-                    // }, 500);
-                    // setTimeout(function () {
-                    // $("#Resource01").fadeOut();
-                    // $("#Resource02").fadeIn(function() {
-                    //     $('#Resource02 .animateNum').countUp();
-                    // });
-                    // }, 7000);
-                    // setTimeout(function () {
-                    // $("#Resource02").fadeOut();
-                    // $("#Resource03").fadeIn(function() {
-                    //     $('#Resource03 .animateNum').countUp();
-                    // });
-                    // }, 14000);
-                    // setTimeout(function () {
-                    // $("#Resource03").fadeOut();
-                    // $("#Resource04").fadeIn(function() {
-                    //     $('#Resource04 .animateNum').countUp();
-                    // });
-                    // }, 21000);
-                }
-                if(destination.anchor!="Resource_Efficiency1"&&destination.anchor!="Resource_Efficiency2"&&destination.anchor!="Resource_Efficiency3"&&destination.anchor!="Resource_Efficiency4")
-                    {
+                    if (origin.anchor == 'FixDye') {
+                        $(".hometitle.Fixed").addClass("show");
+                    }
+                    if (origin.anchor == 'Fixed_Colour_Recipe' || origin.anchor == 'Resource_Efficiency1' || origin.anchor == 'Resource_Efficiency2' || origin.anchor == 'Resource_Efficiency3') {
+                        $(".hometitle.Fixed").removeClass("show");
+                        // setTimeout(function () {
+                        //     $("#Resource01").fadeIn(function () {
+                        //         $('#Resource01 .animateNum').countUp();
+                        //     });
+                        // }, 500);
+                        // setTimeout(function () {
+                        // $("#Resource01").fadeOut();
+                        // $("#Resource02").fadeIn(function() {
+                        //     $('#Resource02 .animateNum').countUp();
+                        // });
+                        // }, 7000);
+                        // setTimeout(function () {
+                        // $("#Resource02").fadeOut();
+                        // $("#Resource03").fadeIn(function() {
+                        //     $('#Resource03 .animateNum').countUp();
+                        // });
+                        // }, 14000);
+                        // setTimeout(function () {
+                        // $("#Resource03").fadeOut();
+                        // $("#Resource04").fadeIn(function() {
+                        //     $('#Resource04 .animateNum').countUp();
+                        // });
+                        // }, 21000);
+                    }
+                    if (destination.anchor != "Resource_Efficiency1" && destination.anchor != "Resource_Efficiency2" && destination.anchor != "Resource_Efficiency3" && destination.anchor != "Resource_Efficiency4") {
                         $("#s4").fadeOut()
                         $("#s4n").fadeOut()
                     }
-                if (destination.anchor == 'Superior_Color_Fastness') {
-                
+                    if (destination.anchor == 'Superior_Color_Fastness') {
 
-                    console.log("滚动到图片")
-                    // setTimeout(function () {
-                    // 	$(".superior-pic1").fadeIn(3000);
-                    // 	let count=1
-                    // 	setInterval(()=>{
-                    // 		count=count+1
-                    // 		$('.superior-pic1 img:nth-of-type('+count+')').fadeIn(3000);
-                    // 	},4000)
-                    // }, 500)
-                    //   	setTimeout(()=>{
-                    // 	ScrollTrigger.create({
-                    // 		trigger:".imggroups",
-                    // 		start: 'top top',
-                    // 		end: 'bottom bottom',
-                    // 		markers:true,
-                    // 		scrub:true,
-                    // 		pin:true,
-                    // 		animation:
-                    // 			gsap.fromTo('.pic01',{width:'200px'},{width:'1000px', duration: 2})
 
-                    // 	})	
-                    // },500)
+                        console.log("滚动到图片")
+                        // setTimeout(function () {
+                        // 	$(".superior-pic1").fadeIn(3000);
+                        // 	let count=1
+                        // 	setInterval(()=>{
+                        // 		count=count+1
+                        // 		$('.superior-pic1 img:nth-of-type('+count+')').fadeIn(3000);
+                        // 	},4000)
+                        // }, 500)
+                        //   	setTimeout(()=>{
+                        // 	ScrollTrigger.create({
+                        // 		trigger:".imggroups",
+                        // 		start: 'top top',
+                        // 		end: 'bottom bottom',
+                        // 		markers:true,
+                        // 		scrub:true,
+                        // 		pin:true,
+                        // 		animation:
+                        // 			gsap.fromTo('.pic01',{width:'200px'},{width:'1000px', duration: 2})
 
-                    $(".superior-pic li:nth-child(1)").css('opacity', '1')
-                    $(".superior-pic li:nth-child(1)").css('transform', 'translate(26vw, 26vh) scale(4)')
+                        // 	})	
+                        // },500)
 
-                    $(".superior-pic li:nth-child(2)").css('opacity', '1')
+                        $(".superior-pic li:nth-child(1)").css('opacity', '1')
+                        $(".superior-pic li:nth-child(1)").css('transform', 'translate(26vw, 26vh) scale(4)')
 
-                    $(".superior-pic li:nth-child(2)").css('transform', 'translate(-43vw, -28vh) scale(2.5)')
+                        $(".superior-pic li:nth-child(2)").css('opacity', '1')
 
-                    $(".superior-pic li:nth-child(3)").css('opacity', '1')
+                        $(".superior-pic li:nth-child(2)").css('transform', 'translate(-43vw, -28vh) scale(2.5)')
 
-                    $(".superior-pic li:nth-child(3)").css('transform', 'translate(-33vw, 18vh) scale(3)')
-                    $(".superior-pic li:nth-child(4)").css('opacity', '1')
+                        $(".superior-pic li:nth-child(3)").css('opacity', '1')
 
-                    $(".superior-pic li:nth-child(4)").css('transform', 'translate(-22vw, -17vh) scale(2)')
-                    $(".superior-pic li:nth-child(5)").css('opacity', '1')
+                        $(".superior-pic li:nth-child(3)").css('transform', 'translate(-33vw, 18vh) scale(3)')
+                        $(".superior-pic li:nth-child(4)").css('opacity', '1')
 
-                    $(".superior-pic li:nth-child(5)").css('transform', 'translate(32vw, -30vh) scale(2)')
-                    $(".superior-pic li:nth-child(6)").css('opacity', '0.3')
+                        $(".superior-pic li:nth-child(4)").css('transform', 'translate(-22vw, -17vh) scale(2)')
+                        $(".superior-pic li:nth-child(5)").css('opacity', '1')
 
-                    $(".superior-pic li:nth-child(6)").css('transform', 'translate(-7vw, -15vh) scale(1.3)')
-                    $(".superior-pic li:nth-child(7)").css('opacity', '0.3')
+                        $(".superior-pic li:nth-child(5)").css('transform', 'translate(32vw, -30vh) scale(2)')
+                        $(".superior-pic li:nth-child(6)").css('opacity', '0.3')
 
-                    $(".superior-pic li:nth-child(7)").css('transform', 'translate(0vw, 8vh) scale(2)')
-                    $(".superior-pic li:nth-child(8)").css('opacity', '0.3')
+                        $(".superior-pic li:nth-child(6)").css('transform', 'translate(-7vw, -15vh) scale(1.3)')
+                        $(".superior-pic li:nth-child(7)").css('opacity', '0.3')
 
-                    $(".superior-pic li:nth-child(8)").css('transform', 'translate(28vw, -8vh) scale(1)')
-                } else {
-                    $(".superior-pic li:nth-child(1)").css('opacity', '0')
+                        $(".superior-pic li:nth-child(7)").css('transform', 'translate(0vw, 8vh) scale(2)')
+                        $(".superior-pic li:nth-child(8)").css('opacity', '0.3')
 
-                    $(".superior-pic li:nth-child(1)").css('transform', 'translate(-50%,-50%) scale(1)')
-                    $(".superior-pic li:nth-child(2)").css('opacity', '0')
+                        $(".superior-pic li:nth-child(8)").css('transform', 'translate(28vw, -8vh) scale(1)')
+                    } else {
+                        $(".superior-pic li:nth-child(1)").css('opacity', '0')
 
-                    $(".superior-pic li:nth-child(2)").css('transform', 'translate(-50%,-50%) scale(1)')
-                    $(".superior-pic li:nth-child(3)").css('opacity', '0')
+                        $(".superior-pic li:nth-child(1)").css('transform', 'translate(-50%,-50%) scale(1)')
+                        $(".superior-pic li:nth-child(2)").css('opacity', '0')
 
-                    $(".superior-pic li:nth-child(3)").css('transform', 'translate(-50%,-50%) scale(1)')
-                    $(".superior-pic li:nth-child(4)").css('opacity', '0')
+                        $(".superior-pic li:nth-child(2)").css('transform', 'translate(-50%,-50%) scale(1)')
+                        $(".superior-pic li:nth-child(3)").css('opacity', '0')
 
-                    $(".superior-pic li:nth-child(4)").css('transform', 'translate(-50%,-50%) scale(1)')
+                        $(".superior-pic li:nth-child(3)").css('transform', 'translate(-50%,-50%) scale(1)')
+                        $(".superior-pic li:nth-child(4)").css('opacity', '0')
 
-                    $(".superior-pic li:nth-child(5)").css('opacity', '0')
+                        $(".superior-pic li:nth-child(4)").css('transform', 'translate(-50%,-50%) scale(1)')
 
-                    $(".superior-pic li:nth-child(5)").css('transform', 'translate(-50%,-50%) scale(1)')
+                        $(".superior-pic li:nth-child(5)").css('opacity', '0')
 
-                    $(".superior-pic li:nth-child(6)").css('opacity', '0')
+                        $(".superior-pic li:nth-child(5)").css('transform', 'translate(-50%,-50%) scale(1)')
 
-                    $(".superior-pic li:nth-child(6)").css('transform', 'translate(-50%,-50%) scale(1)')
-                    $(".superior-pic li:nth-child(7)").css('opacity', '0')
+                        $(".superior-pic li:nth-child(6)").css('opacity', '0')
 
-                    $(".superior-pic li:nth-child(7)").css('transform', 'translate(-50%,-50%) scale(1)')
-                    $(".superior-pic li:nth-child(8)").css('opacity', '0')
+                        $(".superior-pic li:nth-child(6)").css('transform', 'translate(-50%,-50%) scale(1)')
+                        $(".superior-pic li:nth-child(7)").css('opacity', '0')
 
-                    $(".superior-pic li:nth-child(8)").css('transform', 'translate(-50%,-50%) scale(1)')
-                }
-                if (origin.anchor == 'Short-Lead_Time' ) {
+                        $(".superior-pic li:nth-child(7)").css('transform', 'translate(-50%,-50%) scale(1)')
+                        $(".superior-pic li:nth-child(8)").css('opacity', '0')
 
-                    window.onload = function () {
+                        $(".superior-pic li:nth-child(8)").css('transform', 'translate(-50%,-50%) scale(1)')
+                    }
+                    if (origin.anchor == 'Short-Lead_Time') {
+
+                        window.onload = function () {
+                            var video = document.getElementById('videoplay');
+                            video.autoplay = true;
+
+                            setTimeout(function () {
+
+                                video.play();
+                            }, 3000); // 3000毫秒 = 3秒
+                        };
+                    }
+                    if (destination.anchor == "Footer") {
+                        var video = document.getElementById('videoplay');
+                        video.autoplay = true;
+                        setTimeout(function () {
+                            video.play();
+                        }, 3000); // 3000毫秒 = 3秒
+                    }
+                    if (origin.anchor == 'Resource_Efficiency') {
+
+                        //console.log("滚动到了 Superior_Color_Fastness 部分");
+                    }
+                },
+                afterLoad: function (origin, destination, direction, trigger) {
+                    var origin = this;
+                    if (origin.anchor == 'Resource_Efficiency') {
+                        //$(".hometitle.Fixed").addClass("show");
+                    }
+                    if (origin.anchor == 'Footer') {
                         var video = document.getElementById('videoplay');
                         video.autoplay = true;
 
                         setTimeout(function () {
+                            $("#videoplay").fadeIn();
 
                             video.play();
-                        }, 3000); // 3000毫秒 = 3秒
-                    };
-                }
-                if(destination.anchor=="Footer"){
-                    var video = document.getElementById('videoplay');
-                    video.autoplay = true;
-                        setTimeout(function () {
-                            video.play();
-                        }, 3000); // 3000毫秒 = 3秒
-                }
-                if (origin.anchor == 'Resource_Efficiency') {
-
-                    //console.log("滚动到了 Superior_Color_Fastness 部分");
-                }
-            },
-            afterLoad: function (origin, destination, direction, trigger) {
-                var origin = this;
-                if (origin.anchor == 'Resource_Efficiency') {
-                    //$(".hometitle.Fixed").addClass("show");
-                }
-                if (origin.anchor == 'Footer') {
-                    var video = document.getElementById('videoplay');
-                    video.autoplay = true;
-
-                    setTimeout(function () {
-                    $("#videoplay").fadeIn();
-
-                        video.play();
-                    }, 1000);
-                }else{
-                    $("#videoplay").fadeOut();
-                }
+                        }, 1000);
+                    } else {
+                        $("#videoplay").fadeOut();
+                    }
 
 
-            },
-        });
+                },
+            });
         })
-        $('#menuBtn').click(function() {
-      $('#sidePanel').addClass('active');  // 给侧边栏添加 "active" 类，显示侧边栏
-    });
+        $('#menuBtn').click(function () {
+            $('#sidePanel').addClass('active');  // 给侧边栏添加 "active" 类，显示侧边栏
+        });
 
-    // 当点击关闭按钮时，隐藏侧边栏
-    $('#closeBtn').click(function() {
-      $('#sidePanel').removeClass('active');  // 移除 "active" 类，隐藏侧边栏
-    });
+        // 当点击关闭按钮时，隐藏侧边栏
+        $('#closeBtn').click(function () {
+            $('#sidePanel').removeClass('active');  // 移除 "active" 类，隐藏侧边栏
+        });
     </script>
     <script>
         // var swiper = new Swiper(".brand-list", {
@@ -927,72 +958,72 @@
         // });
     </script>
     <script>
-        function isWeixin() {
-      const ua = navigator.userAgent.toLowerCase();
-      return ua.indexOf('micromessenger') !== -1;
-    }
-    function hideWeChatToolbar() {
-      if (isWeixin()) {
-        if (typeof WeixinJSBridge !== 'undefined') {
+        // function isWeixin() {
+        //     const ua = navigator.userAgent.toLowerCase();
+        //     return ua.indexOf('micromessenger') !== -1;
+        // }
+        // function hideWeChatToolbar() {
+        //     if (isWeixin()) {
+        //         if (typeof WeixinJSBridge !== 'undefined') {
 
-          WeixinJSBridge.call('hideToolbar');
-          WeixinJSBridge.call('hideOptionMenu');
-        } else {
-          document.addEventListener('WeixinJSBridgeReady', function() {
-            WeixinJSBridge.call('hideToolbar');
-            WeixinJSBridge.call('hideOptionMenu');
-          });
-        }
-      }
-    }
-    function enterFullscreen() {
-      const el = document.documentElement;
-      if (el.requestFullscreen) {
-        el.requestFullscreen();
-      } else if (el.mozRequestFullScreen) {
-        el.mozRequestFullScreen();
-      } else if (el.webkitRequestFullscreen) {
-        el.webkitRequestFullscreen();
-      } else if (el.msRequestFullscreen) {
-        el.msRequestFullscreen();
-      }
-    }
+        //             WeixinJSBridge.call('hideToolbar');
+        //             WeixinJSBridge.call('hideOptionMenu');
+        //         } else {
+        //             document.addEventListener('WeixinJSBridgeReady', function () {
+        //                 WeixinJSBridge.call('hideToolbar');
+        //                 WeixinJSBridge.call('hideOptionMenu');
+        //             });
+        //         }
+        //     }
+        // }
+        // function enterFullscreen() {
+        //     const el = document.documentElement;
+        //     if (el.requestFullscreen) {
+        //         el.requestFullscreen();
+        //     } else if (el.mozRequestFullScreen) {
+        //         el.mozRequestFullScreen();
+        //     } else if (el.webkitRequestFullscreen) {
+        //         el.webkitRequestFullscreen();
+        //     } else if (el.msRequestFullscreen) {
+        //         el.msRequestFullscreen();
+        //     }
+        // }
 
         document.addEventListener("DOMContentLoaded", function () {
-           
+
             if (window.location.hash) {
                 history.pushState({}, '', window.location.pathname);
             }
-       
-          
+
+
         });
-         
-document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-    // 通过下面这个API隐藏底部导航栏
-    WeixinJSBridge.call('hideToolbar');
-});
-        window.onload = function() {
+
+        // document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        //     // 通过下面这个API隐藏底部导航栏
+        //     WeixinJSBridge.call('hideToolbar');
+        // });
+        window.onload = function () {
             // hideWeChatToolbar()
             // enterFullscreen()
 
             var swiper = new Swiper(".brand-list", {
-            slidesPerView:isMobile?5: 11,
-            spaceBetween: 30,
+                slidesPerView: isMobile ? 5 : 11,
+                spaceBetween: 30,
 
-            loop: true,
-            speed: 3000,
-            autoplay: {
-                delay: 0,
-                disableOnInteraction: false,
-            },
-        });
-if(isMobile){
-    
-    $('#section9').removeClass('fp-auto-height')
-    $('#section9').removeClass('bottom')
+                loop: true,
+                speed: 3000,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+            });
+            if (isMobile) {
 
-}
-    };
+                $('#section9').removeClass('fp-auto-height')
+                $('#section9').removeClass('bottom')
+
+            }
+        };
     </script>
 </body>
 

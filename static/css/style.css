@@ -321,8 +321,8 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
         /* padding-top: 7rem !important;
     padding-bottom: 10rem !important; */
 
-    height: calc(22rem - constant(safe-area-inset-bottom)) !important;
-    height: calc(22rem - env(safe-area-inset-bottom)) !important;
+        height: calc(22rem - constant(safe-area-inset-bottom)) !important;
+        height: calc(22rem - env(safe-area-inset-bottom)) !important;
         display: block !important;
 
     }

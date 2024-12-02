@@ -475,10 +475,8 @@
     </div>
     
     <script>
-          function isWeixin() {
-      const ua = navigator.userAgent.toLowerCase();
-      return ua.indexOf('micromessenger') !== -1;
-    }
+          var  isMobile= window.innerWidth <= 768;
+ 
         var wowvm = new WOW({
         })
         wowvm.init();
@@ -497,8 +495,7 @@
             scrollOverflow: true,
             anchors: ['FixDye', 'Fixed_Colour_Recipe', 'Resource_Efficiency1', 'Resource_Efficiency2', 'Resource_Efficiency3', 'Resource_Efficiency4', 'Superior_Color_Fastness', 'Short-Lead_Time', 'Powered_By_REO-ECO', 'Footer'],
             navigation: true,
-           paddingBottom:isWeixin()?'2rem':'',
-
+            paddingBottom:0,
             // navigationTooltips: ['FixDye', 'Fixed Colour Recipe', 'Resource Efficiency', 'Resource Efficiency', 'Resource Efficiency', 'Resource Efficiency', 'Superior Color Fastness', 'Short-Lead Time', 'Powered By REO-ECO', 'Footer'],
             showActiveTooltip: false,
             navigationPosition: 'right',
@@ -566,22 +563,30 @@
                         // }, 1000);
                     }
                     if (destination.anchor == 'Resource_Efficiency1') {
+                        $('#Resource01 .number').css('opacity',0)
 
                         setTimeout(function () {
                             $("#Resource01").fadeIn(function () {
                                 $('#Resource01 .animateNum').countUp();
+                        $('#Resource01 .number').css('opacity',1)
+
                             });
                         }, 1000);
                     } else {
                         $("#Resource01").fadeOut(500);
 
+
                     }
 
 
                     if (destination.anchor == 'Resource_Efficiency2') {
+                        $('#Resource02 .number').css('opacity',0)
+
                         setTimeout(function () {
                             $("#Resource02").fadeIn(function () {
                                 $('#Resource02 .animateNum').countUp();
+                        $('#Resource02 .number').css('opacity',1)
+
                             });
                         }, 1000);
                     } else {
@@ -589,9 +594,13 @@
 
                     }
                     if (destination.anchor == 'Resource_Efficiency3') {
+                        $('#Resource03 .number').css('opacity',0)
+
                         setTimeout(function () {
                             $("#Resource03").fadeIn(function () {
                                 $('#Resource03 .animateNum').countUp();
+                        $('#Resource03 .number').css('opacity',1)
+
                             });
                         }, 1000);
                     } else {
@@ -599,11 +608,14 @@
 
                     }
                     if (destination.anchor == 'Resource_Efficiency4') {
+                        $('#Resource04 .number').css('opacity',0)
                  
 
                         setTimeout(function () {
                             $("#Resource04").fadeIn(function () {
                                 $('#Resource04 .animateNum').countUp();
+                        $('#Resource04 .number').css('opacity',1)
+
                             });
                             $("#s4").fadeIn()
                             $("#s4n").fadeIn()
@@ -666,11 +678,13 @@
                     }
 
                     if (destination.anchor == 'Resource_Efficiency1') {
-                   
-
+                        
+                        $('#Resource01 .number').css('opacity',0)
                         setTimeout(function () {
                             $("#Resource01").fadeIn(function () {
                                 $('#Resource01 .animateNum').countUp();
+                                 $('#Resource01 .number').css('opacity',1)
+
                             });
                             $("#s4").fadeIn()
                             $("#s4n").fadeIn()
@@ -681,9 +695,13 @@
                     }
 
                     if (destination.anchor == 'Resource_Efficiency2') {
+                        $('#Resource02 .number').css('opacity',0)
+
                         setTimeout(function () {
                             $("#Resource02").fadeIn(function () {
                                 $('#Resource02 .animateNum').countUp();
+                                $('#Resource02 .number').css('opacity',1)
+
                             });
                         }, 1000);
                     } else {
@@ -691,9 +709,13 @@
 
                     }
                     if (destination.anchor == 'Resource_Efficiency3') {
+                        $('#Resource03 .number').css('opacity',0)
+
                         setTimeout(function () {
                             $("#Resource03").fadeIn(function () {
                                 $('#Resource03 .animateNum').countUp();
+                                $('#Resource03 .number').css('opacity',1)
+
                             });
                         }, 1000);
                     } else {
@@ -701,9 +723,13 @@
 
                     }
                     if (destination.anchor == 'Resource_Efficiency4') {
+                        $('#Resource04 .number').css('opacity',0)
+
                         setTimeout(function () {
                             $("#Resource04").fadeIn(function () {
                                 $('#Resource04 .animateNum').countUp();
+                                $('#Resource04 .number').css('opacity',1)
+
                             });
                         }, 1000);
 
@@ -860,9 +886,6 @@
                     //$(".hometitle.Fixed").addClass("show");
                 }
                 if (origin.anchor == 'Footer') {
-                    myFullpage.paddingBottom='2rem';
-                    console.log( myFullpage.paddingBottom,' myFullpage.paddingBottom')
-
                     var video = document.getElementById('videoplay');
                     video.autoplay = true;
 
@@ -872,9 +895,6 @@
                         video.play();
                     }, 1000);
                 }else{
-                    myFullpage.paddingBottom='';
-                    console.log( myFullpage.paddingBottom,' myFullpage.paddingBottom')
-
                     $("#videoplay").fadeOut();
                 }
 
@@ -893,7 +913,7 @@
     </script>
     <script>
         var swiper = new Swiper(".brand-list", {
-            slidesPerView: 11,
+            slidesPerView:isMobile?5: 11,
             spaceBetween: 30,
 
             loop: true,
@@ -905,7 +925,10 @@
         });
     </script>
     <script>
-      
+        function isWeixin() {
+      const ua = navigator.userAgent.toLowerCase();
+      return ua.indexOf('micromessenger') !== -1;
+    }
     function hideWeChatToolbar() {
       if (isWeixin()) {
         if (typeof WeixinJSBridge !== 'undefined') {
@@ -949,6 +972,14 @@ document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
         window.onload = function() {
             // hideWeChatToolbar()
             // enterFullscreen()
+
+         
+if(isMobile){
+    
+    $('#section9').removeClass('fp-auto-height')
+    $('#section9').removeClass('bottom')
+
+}
     };
     </script>
 </body>

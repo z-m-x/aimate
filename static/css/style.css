@@ -286,9 +286,33 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
     cursor: pointer;
   }
 @media (max-width: 768px) {
-    .section::before{
-        height: 10rem !important;
+    #section9{
+        padding-top: 7rem;
     }
+    .footer{
+        height: auto !important;
+    }
+    .foot-copy .copy-nav a {
+        margin-right: 1rem !important;
+        margin-left: 0 !important;
+    }
+    .foot-copyright {
+        position: initial !important;
+        height: auto !important;
+        padding-bottom: 5rem !important;
+    }
+    .foot-box {
+        padding-top: 7rem !important;
+    padding-bottom: 10rem !important;
+        display: block !important;
+
+    }
+    .foot-brand .swiper-slide img{
+        height: 2rem !important;
+    }
+    /* .section::before{
+        height: 0rem !important;
+    } */
     .FixDye .logo-fixdye{
         width: 9rem  !important;
         height: 3.26rem !important;
@@ -341,9 +365,12 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
    
     .foot-copy{
         font-size: 0.5rem !important;
+        display: block !important
     }
     .foot-nav li a{
         font-size: 0.5rem !important;
+        line-height: initial !important;
+
 
     }
     .foot-nav li dt{
@@ -351,22 +378,36 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
         
     }
     .foot-nav li{
-        margin: 0 0.2rem !important;
+        margin: 0 1rem 0 0 !important;
+        display: flex;
+        flex-direction: column;
     }
     .foot-mail .title{
-        font-size: 0.5rem !important;
+        font-size: 1rem !important;
+        line-height: initial !important;
 
     }
+    .foot-mail .form-input{
+        width: 100% !important;
+        padding-top: 0.5rem !important;
+        margin-bottom: 2rem !important;
+        height: 2.4rem !important;
+        display: flex;
+        align-items: center;
+    }
     .foot-mail .form-input input{
-        font-size: 0.4rem !important;
+        font-size: 0.6rem !important;
     }
     .foot-mail{
-        width: 6rem !important;
+        width: 10rem !important;
     }
     .foot-mail .form-input button{
-        width: 0.375rem !important;
-        height: 0.375rem !important;
-        background-size: auto 0.2rem !important;
+        width: 1.375rem !important;
+        height: 1.375rem !important;
+        background-size: auto 0.5rem !important;
+    }
+    .foot-nav{
+        width: fit-content !important;
     }
     .nav{
         display: none !important;
@@ -664,8 +705,8 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
 .foot-brand{
     display: block;
     width: 100%;
-    padding: 0.1875rem 0.1875rem 0.1875rem 0.1875rem;
-    height: 0.95rem;
+    padding: 15px 15px 15px 15px;
+    height: 76px;
     background-color: #000;
 }
 .foot-brand .swiper-slide{
@@ -674,7 +715,7 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
 .foot-brand .swiper-slide img{
     display: block;
     width: auto;
-    height: 0.5625rem;
+    height: 45px;
 }
 .footer {
     display: block;
@@ -704,20 +745,20 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
 }
 .foot-mail .form-input{
     display: flex;
-    width: 4.725rem;
-    padding-top: 0.25rem;
+    width: 378px;
+    padding-top: 20px;
     padding-bottom: 3px;
     background: url("../img/line-mail.png") no-repeat left bottom;
     background-size: contain;
 }
 .foot-mail .form-input input{
     width: 100%;
-    height: 0.375rem;
+    height: 30px;
     border: none;
     font-family: Aeonik;
     font-size: 18px;
     font-weight: 400;
-    line-height: 0.27rem;
+    line-height: 21.6px;
     letter-spacing: -0.02em;
 }
 .foot-mail .form-input button{
@@ -730,7 +771,7 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
 }
 .foot-nav{
     display: flex;
-    width: 9.125rem;
+    width: 730px;
 }
 .foot-nav li{
     margin: 0 30px;
@@ -738,7 +779,7 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
 .foot-nav li dt{
     font-size: 24px;
     font-weight: 500;
-    line-height: 0.36rem;
+    line-height: 28.8px;
     letter-spacing: -0.02em;
     text-align: left;
     padding-bottom: 0.3125rem;
@@ -746,7 +787,7 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
 .foot-nav li a{
     font-size: 24px;
     font-weight: 400;
-    line-height: 0.3rem;
+    line-height: 24px;
     letter-spacing: -0.02em;
     text-align: left;
 }
@@ -768,7 +809,7 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
     display: block;
     width: 5.775rem;
     height: auto;
-    padding-bottom: 0.375rem;
+    padding-bottom: 30px;
 }
 .foot-logo img{
     display: block;
@@ -780,7 +821,7 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
     color: #D0D0D0;
     font-size: 24px;
     font-weight: 400;
-    line-height: 0.3rem;
+    line-height: 24px;
     letter-spacing: -0.02em;
     justify-content: space-between;
 }
